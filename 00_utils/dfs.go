@@ -14,3 +14,13 @@ func dfs(nodes []string, adjList map[string][]string, perf string, pos int, res 
 
 	return false
 }
+
+func edgeListToAdjList(edges [][]string) (adj map[string][]string) {
+	adj = make(map[string][]string)
+
+	for _, edge := range edges {
+		adj[edge[0]] = append(adj[edge[0]], edge[1])
+	}
+
+	return
+}

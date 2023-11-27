@@ -57,3 +57,35 @@ func Test_dfs(t *testing.T) {
 		})
 	}
 }
+
+func Test_eddgeListToAdjList(t *testing.T) {
+	tests := []struct {
+		name string
+		edge [][]string
+		adj  map[string][]string
+	}{
+		{
+			name: "simple test: 1-2",
+			edge: [][]string{{"1", "2"}},
+			adj: map[string][]string{
+				"1": {"2"},
+			},
+		}, {
+			name: "1-23 2-3",
+			edge: [][]string{{"1", "2"}, {"1", "3"}, {"2", "3"}},
+			adj: map[string][]string{
+				"1": {"2", "3"},
+				"2": {"3"},
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := edgeListToAdjList(tt.edge)
+
+			if !reflect.DeepEqual(got, tt.adj) {
+				t.Errorf("eddgeListToAdjList() = %v, want %v", got, tt.adj)
+			}
+		})
+	}
+}
