@@ -3,7 +3,7 @@ package mergeklists
 import (
 	"container/heap"
 
-	utils "github.com/mekitmedia/leetcode/0_utils"
+	utils "github.com/mekitmedia/leetcode/00_utils"
 )
 
 func mergeKLists(lists []*ListNode) *ListNode {

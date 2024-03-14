@@ -5,7 +5,8 @@ package funcions
 
 // reverseString
 // we need to use len - 1 for right pointer
-// nice way to swap varaibles in go in one lign
+// nice way to swap varaibles in go in one ligne
+// both pointer can move at once since we do swaps
 func reverseString(s []byte) {
 	i, j := 0, len(s)-1
 
