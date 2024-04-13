@@ -11,22 +11,18 @@ func Constructor() StockSpanner {
 
 func (this *StockSpanner) Next(price int) int {
 	n := len(this.Stack)
-	var max int = 1
-	for i := n - 1; i >= 0; i-- {
-		prices := this.Stack[i]
-		if prices[0] <= price {
-			max += this.Stack[i][1]
-			// remove what we calculated from the stack
+	max := 1
+	// look at the stack in rever order
+	for i := n - 1; i > 0; i-- {
+		prev := this.Stack[i]
+		if prev[0] <= price {
+			// add the pre calculated max
+			max += prev[1]
+			// remove this one from the stack the new one is better
 			this.Stack = this.Stack[:i]
 		}
 	}
-	// the new day we just calculated
+	// add the new price to the stack
 	this.Stack = append(this.Stack, [2]int{price, max})
 	return max
 }
-
-/**
- * Your StockSpanner object will be instantiated and called as such:
- * obj := Constructor();
- * param_1 := obj.Next(price);
- */
