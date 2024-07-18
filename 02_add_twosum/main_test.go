@@ -19,6 +19,11 @@ func Test_addTwoNumbers(t *testing.T) {
 			l1:   []int{2, 4, 3},
 			l2:   []int{5, 6, 4},
 			want: []int{7, 0, 8},
+		}, {
+			name: "exp 1",
+			l1:   []int{9, 9, 9, 9, 9, 9, 9},
+			l2:   []int{9, 9, 9, 9},
+			want: []int{8, 9, 9, 9, 0, 0, 0, 1},
 		},
 	}
 	for _, tt := range tests {
@@ -27,9 +32,9 @@ func Test_addTwoNumbers(t *testing.T) {
 			l2 := utils.ListToListNode(tt.l2)
 
 			got := addTwoNumbers(l1, l2)
-			want := utils.ListToListNode(tt.want)
+			gotList := utils.ListNodeToList(got)
 
-			require.Equal(t, want, got)
+			require.Equal(t, tt.want, gotList)
 		})
 	}
 }
