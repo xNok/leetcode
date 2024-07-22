@@ -1,12 +1,12 @@
-package removeduplicatefromsortedarrays
+package removeduplicatefromsortedarrays2
 
 func removeDuplicates(nums []int) int {
 	var k, r int
-	m := make(map[int]int)
+	m := make(map[int]bool)
 
 	for i, n := range nums {
 		// duplicate
-		if ok := m[n]; ok > 1 {
+		if ok := m[n]; ok {
 			k++
 			continue
 		}
@@ -15,7 +15,7 @@ func removeDuplicates(nums []int) int {
 			nums[i-k] = n
 		}
 
-		m[n]++
+		m[n] = true
 		r++
 	}
 
